@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- EDITABLE: Browser tab title -->
+  <title>Lesziel Perocillo | Data Encoder & Virtual Assistant</title>
+
+  <!-- Cursive Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =====================================================
+       FULLY EDITABLE SETTINGS
+       Change colors, fonts, image paths, and sizes here.
+    ===================================================== */
+
+    :root {
+      --main-bg-image: url("images/bg.avif");
+      --profile-image: url("images/profile.png");
+
+      --cream-overlay: rgba(255, 250, 245, 0.90);
+      --card-bg: rgba(255, 255, 255, 0.78);
+
+      --dark-brown: #5c4033;
+      --coffee: #6b4b33;
+      --brown: #7f5539;
+      --soft-brown: #b08968;
+      --light-brown: #d8b89c;
+      --border: #ead8c8;
+      --cream: #fffaf5;
+
+      --font-main: 'Poppins', Arial, sans-serif;
+      --font-heading: 'Playfair Display', serif;
+      --font-cursive: 'Great Vibes', cursive;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-main);
+background:
+  linear-gradient(
+    rgba(243, 240, 238, 0.70),
+    rgba(255, 250, 245, 0.70)
+  ),
+  var(--main-bg-image);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: var(--dark-brown);
+      line-height: 1.6;
+    }
+
+    /* HEADER */
+    header {
+      background: rgba(255, 255, 255, 0.70);
+      backdrop-filter: blur(10px);
+      padding: 20px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(127, 85, 57, 0.08);
+    }
+
+    header h1 {
+      font-family: var(--font-cursive);
+      font-size: 48px;
+      color: var(--brown);
+      font-weight: normal;
+    }
+
+    nav a {
+      color: var(--coffee);
+      text-decoration: none;
+      margin-left: 18px;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      color: var(--soft-brown);
+      text-decoration: underline;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 90vh;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      padding: 80px 8%;
+    }
+
+    .cursive {
+      font-family: var(--font-cursive);
+      font-size: 86px;
+      color: #8d6542;
+      font-weight: normal;
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+
+    .hero h2 {
+      font-family: var(--font-heading);
+      font-size: 64px;
+      line-height: 1.05;
+      color: var(--coffee);
+      margin-bottom: 18px;
+    }
+
+    .hero-role {
+      font-size: 21px;
+      color: #8d6542;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 25px;
+      max-width: 620px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--soft-brown);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    .btn:hover {
+      background: var(--brown);
+      transform: scale(1.05);
+    }
+
+    .btn-outline {
+      background: var(--cream);
+      color: var(--brown);
+      margin-left: 10px;
+      border: 2px solid var(--brown);
+    }
+
+    .btn-outline:hover {
+      background: var(--brown);
+      color: white;
+    }
+
+    .hero-card {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      text-align: center;
+    }
+
+    .hero-card img {
+      width: 420px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 0;
+      border: none;
+      object-fit: contain;
+      filter: drop-shadow(0 18px 25px rgba(127, 85, 57, 0.22));
+    }
+
+    .hero-card h3 {
+      font-family: var(--font-heading);
+      color: var(--coffee);
+      font-size: 26px;
+      margin-top: 10px;
+    }
+
+    /* GENERAL SECTIONS */
+    section {
+      padding: 60px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      color: var(--brown);
+      font-family: var(--font-heading);
+      font-size: 36px;
+      margin-bottom: 35px;
+    }
+
+    .about,
+    .contact-box,
+    .experience-box,
+    .skills,
+    .service-card,
+    .portfolio-item,
+    .resume-box {
+      background: var(--card-bg);
+      backdrop-filter: blur(8px);
+      border-radius: 25px;
+      padding: 30px;
+      box-shadow: 0 8px 25px rgba(127, 85, 57, 0.08);
+      border: 1px solid var(--border);
+    }
+
+    .about,
+    .contact-box,
+    .experience-box,
+    .skills,
+    .resume-box {
+      max-width: 950px;
+      margin: auto;
+    }
+
+    /* EXPERIENCE */
+    .experience-item {
+      margin-bottom: 25px;
+    }
+
+    .experience-item h3 {
+      color: var(--soft-brown);
+      margin-bottom: 5px;
+    }
+
+    .experience-item ul,
+    .resume-box ul {
+      margin-left: 20px;
+      margin-top: 10px;
+    }
+
+    /* CARDS */
+    .services,
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 25px;
+    }
+
+    .service-card,
+    .portfolio-item {
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .service-card:hover,
+    .portfolio-item:hover {
+      transform: translateY(-8px);
+    }
+
+    .service-card h3 {
+      color: var(--soft-brown);
+      margin: 12px 0;
+    }
+
+    .icon {
+      font-size: 40px;
+    }
+
+    /* SKILLS */
+    .skill {
+      margin-bottom: 20px;
+    }
+
+    .skill span {
+      font-weight: 700;
+      color: var(--brown);
+    }
+
+    .bar {
+      height: 13px;
+      background: #e9d8c7;
+      border-radius: 20px;
+      margin-top: 7px;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--light-brown), var(--soft-brown), var(--brown));
+      width: 0;
+      transition: width 1.5s ease;
+    }
+
+    /* PORTFOLIO */
+    .portfolio-item {
+      overflow: hidden;
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 15px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .portfolio-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .portfolio-item h3 {
+      color: var(--brown);
+      margin-top: 15px;
+    }
+
+    /* CONTACT */
+    .contact-box p {
+      margin-bottom: 12px;
+      font-size: 17px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 22px;
+      background: var(--brown);
+      color: white;
+      margin-top: 40px;
+    }
+
+    /* IMAGE MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(70, 45, 30, 0.9);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal img {
+      max-width: 95%;
+      max-height: 90%;
+      border-radius: 15px;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: white;
+      font-size: 45px;
+      cursor: pointer;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero h2 {
+        font-size: 50px;
+      }
+
+      .cursive {
+        font-size: 72px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      header {
+        text-align: center;
+        justify-content: center;
+      }
+
+      header h1 {
+        font-size: 42px;
+      }
+
+      nav {
+        margin-top: 15px;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 6px;
+      }
+
+      .hero h2 {
+        font-size: 38px;
+      }
+
+      .cursive {
+        font-size: 58px;
+      }
+
+      .hero-card img {
+        width: 300px;
+      }
+
+      .portfolio-item img {
+        height: 220px;
+      }
+
+      .btn-outline {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- EDITABLE HEADER -->
+  <header>
+    <h1>Lesziel Portfolio</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#services">Services</a>
+      <a href="#skills">Skills</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- EDITABLE HERO SECTION -->
+  <section class="hero">
+    <div>
+      <h2>
+        <span class="cursive">Hello! I'm</span><br>
+        Lesziel
+      </h2>
+
+      <p class="hero-role">
+        Data Encoder • Data Entry Specialist • Virtual Assistant
+      </p>
+
+      <p>
+        I help businesses with data entry, data encoding, administrative support,
+        document management, chat moderation, and record organization.
+      </p>
+
+      <a href="#contact" class="btn">Hire Me</a>
+      <a href="resume/Lesziel_Portfolio_Resume.pdf" class="btn btn-outline" download>
+        Download Resume
+      </a>
+    </div>
+
+    <div class="hero-card">
+      <img src="images/profile.png" alt="Lesziel Profile Photo" />
+      <h3>Lesziel N. Perocillo</h3>
+      <p>
+        Available for Remote Work
+      </p>
+    </div>
+  </section>
+
+  <!-- EDITABLE ABOUT SECTION -->
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+
+    <div class="about">
+      <p>
+        I am a detail-oriented Data Encoder and entry-level Virtual Assistant with
+        experience in data entry, record management, administrative support, and
+        chat moderation. I have hands-on experience encoding and verifying official
+        documents, maintaining accurate records, organizing files, and supporting
+        daily office operations while ensuring confidentiality and accuracy.
+      </p>
+
+      <br>
+
+      <p>
+        I am proficient in Microsoft Office, Google Workspace, Canva, and basic
+        web technologies. With strong attention to detail, excellent organizational
+        skills, and a willingness to learn, I can efficiently handle repetitive
+        tasks, follow instructions, and meet deadlines.
+      </p>
+    </div>
+  </section>
+
+  <!-- EDITABLE EXPERIENCE SECTION -->
+  <section id="experience">
+    <h2 class="section-title">Work Experience</h2>
+
+    <div class="experience-box">
+      <div class="experience-item">
+        <h3>Data Encoder</h3>
+        <p><strong>Municipality of Sibonga</strong> | February 2025 – May 2025</p>
+        <ul>
+          <li>Encoded and verified official civil documents such as birth, marriage, and death certificates.</li>
+          <li>Maintained confidentiality and ensured accurate data entries.</li>
+          <li>Supported staff in document organization and daily administrative tasks.</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <h3>Student Assistant</h3>
+        <p><strong>Sibonga Community College — DOLE SPES Program</strong> | 2022 – 2023</p>
+        <ul>
+          <li>Provided clerical assistance in encoding and filing student and school records.</li>
+          <li>Assisted in report preparation and correspondence management.</li>
+          <li>Delivered responsive service to students and staff inquiries.</li>
+        </ul>
+      </div>
+
+      <div class="experience-item">
+        <h3>Chat Moderator</h3>
+        <p><strong>Online Work Experience</strong> | 2025</p>
+        <ul>
+          <li>Monitored online conversations and community interactions.</li>
+          <li>Responded to messages professionally and promptly.</li>
+          <li>Maintained positive communication and followed platform guidelines.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDITABLE SERVICES SECTION -->
+  <section id="services">
+    <h2 class="section-title">Services I Offer</h2>
+
+    <div class="services">
+      <div class="service-card">
+        <div class="icon">⌨️</div>
+        <h3>Data Entry</h3>
+        <p>Accurate data entry, spreadsheet updates, database management, and information processing.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="icon">📑</div>
+        <h3>Data Encoding</h3>
+        <p>Fast and accurate encoding of records, documents, forms, and business information.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="icon">💬</div>
+        <h3>Chat Support</h3>
+        <p>Customer assistance, message handling, chat moderation, and inquiry responses.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="icon">📋</div>
+        <h3>Administrative Support</h3>
+        <p>File organization, email management, record keeping, and office support tasks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDITABLE SKILLS SECTION -->
+  <section id="skills">
+    <h2 class="section-title">My Skills</h2>
+
+    <div class="skills">
+      <div class="skill"><span>Data Entry</span><div class="bar"><div class="fill" data-width="95%"></div></div></div>
+      <div class="skill"><span>Data Encoding</span><div class="bar"><div class="fill" data-width="95%"></div></div></div>
+      <div class="skill"><span>Document Management</span><div class="bar"><div class="fill" data-width="90%"></div></div></div>
+      <div class="skill"><span>Microsoft Office</span><div class="bar"><div class="fill" data-width="90%"></div></div></div>
+      <div class="skill"><span>Google Workspace</span><div class="bar"><div class="fill" data-width="85%"></div></div></div>
+      <div class="skill"><span>Administrative Support</span><div class="bar"><div class="fill" data-width="85%"></div></div></div>
+      <div class="skill"><span>Chat Moderation</span><div class="bar"><div class="fill" data-width="80%"></div></div></div>
+      <div class="skill"><span>Canva Design</span><div class="bar"><div class="fill" data-width="80%"></div></div></div>
+      <div class="skill"><span>Basic HTML, CSS & JavaScript</span><div class="bar"><div class="fill" data-width="70%"></div></div></div>
+    </div>
+  </section>
+
+  <!-- EDITABLE HIGHLIGHTS SECTION -->
+  <section id="highlights">
+    <h2 class="section-title">Why Work With Me?</h2>
+
+    <div class="services">
+      <div class="service-card">
+        <div class="icon">✅</div>
+        <h3>Detail-Oriented</h3>
+        <p>I focus on accuracy, clean records, and organized work output.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="icon">🔒</div>
+        <h3>Confidential</h3>
+        <p>I can handle sensitive records and documents professionally.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="icon">⚡</div>
+        <h3>Fast Learner</h3>
+        <p>I adapt quickly to new tools, tasks, and client instructions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDITABLE PORTFOLIO SECTION -->
+  <section id="portfolio">
+    <h2 class="section-title">Projects & Work Samples</h2>
+
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <img src="images/data-entry-sample.png"
+             alt="Document Management Tracker"
+             onclick="openModal(this.src)" />
+        <h3>Document Management Tracker</h3>
+        <p>
+          Created a professional document tracking sheet with organized records,
+          status updates, assigned personnel, date received, and last updated information.
+        </p>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="images/folder-sample.png"
+             alt="Document Management Folder Structure"
+             onclick="openModal(this.src)" />
+        <h3>Document Management Folder Structure</h3>
+        <p>
+          Organized digital files using a structured folder system for administrative records,
+          client documents, and data entry projects.
+        </p>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="images/canva-design.png"
+             alt="Canva Design Sample"
+             onclick="openModal(this.src)" />
+        <h3>Canva Design Sample</h3>
+        <p>Simple layout sample for social media, labels, or printable designs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDITABLE RESUME SECTION -->
+  <section id="resume">
+    <h2 class="section-title">Resume</h2>
+
+    <div class="resume-box">
+      <h3>Lesziel N. Perocillo</h3>
+      <p><strong>Data Encoder • Data Entry Specialist • Virtual Assistant</strong></p>
+
+      <br>
+
+      <h3>Core Skills</h3>
+      <ul>
+        <li>Data Entry and Data Encoding</li>
+        <li>Administrative Support and Document Management</li>
+        <li>Chat Moderation and Customer Support</li>
+        <li>Microsoft Office, Google Workspace, and Canva</li>
+      </ul>
+
+      <br>
+
+      <a href="resume/Lesziel_Portfolio_Resume.pdf" class="btn" download>
+        Download Full Resume
+      </a>
+    </div>
+  </section>
+
+  <!-- EDITABLE TESTIMONIALS SECTION -->
+  <section id="testimonials">
+    <h2 class="section-title">Client Feedback</h2>
+
+    <div class="services">
+      <div class="service-card">
+        <p>“Organized, reliable, and detail-oriented with admin and encoding tasks.”</p>
+        <h3>Admin Support</h3>
+      </div>
+
+      <div class="service-card">
+        <p>“Follows instructions carefully and completes tasks accurately.”</p>
+        <h3>Data Entry Task</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDITABLE CONTACT SECTION -->
+  <section id="contact">
+    <h2 class="section-title">Contact Me</h2>
+
+    <div class="contact-box">
+      <p><strong>Email:</strong> plesziel@gmail.com</p>
+      <p><strong>Phone:</strong> 09918855808</p>
+      <p><strong>Location:</strong> Tubod, Sibonga, Cebu</p>
+      <p>
+        <strong>Availability:</strong>
+        Open for Data Entry, Data Encoding, Administrative Support,
+        Chat Support, and Virtual Assistant opportunities.
+      </p>
+
+      <a href="mailto:plesziel@gmail.com" class="btn">Send Email</a>
+      <a href="resume/Lesziel_Portfolio_Resume.pdf" class="btn btn-outline" download>
+        Download Resume
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Lesziel N. Perocillo. Designed with HTML, CSS & JavaScript.</p>
+  </footer>
+
+  <!-- IMAGE PREVIEW MODAL -->
+  <div class="modal" id="imageModal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modalImg" src="" alt="Portfolio Preview" />
+  </div>
+
+  <script>
+    const skillBars = document.querySelectorAll('.fill');
+
+    function animateSkills() {
+      skillBars.forEach(bar => {
+        const width = bar.getAttribute('data-width');
+        bar.style.width = width;
+      });
+    }
+
+    function openModal(src) {
+      document.getElementById('imageModal').style.display = 'flex';
+      document.getElementById('modalImg').src = src;
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').style.display = 'none';
+    }
+
+    window.addEventListener('load', animateSkills);
+  </script>
+
+</body>
+</html>
